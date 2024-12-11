@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一柴カウンター</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .counter {
+            font-size: 3em;
+            margin: 20px;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>一柴カウンター</h1>
+    <div class="counter" id="counter">0</div>
+    <div class="buttons">
+        <button onclick="changeCount(1)">増やす</button>
+        <button onclick="changeCount(-1)" id="decreaseButton">減らす</button>
+        <button onclick="resetCount()">リセット</button>
+    </div>
+    <script>
+        let count = 0;
+
+        function updateCounter() {
+            document.getElementById('counter').textContent = count;
+            document.getElementById('decreaseButton').disabled = count <= 0;
+        }
+
+        function changeCount(amount) {
+            count += amount;
+            updateCounter();
+        }
+
+        function resetCount() {
+            count = 0;
+            updateCounter();
+        }
+
+        updateCounter(); // 初期状態を設定
+    </script>
+</body>
+</html>
